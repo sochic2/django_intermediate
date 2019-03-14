@@ -9,7 +9,10 @@
     <p>{{ board.updated_at }}</p>
     <a href="{% url 'boards:index' %}">BACK</a>
     <a href="{% url 'boards:edit' board.pk %}">[수정]</a>
-    <a href="{% url 'boards:delete' board.pk %}" onclick="return confirn('R U SURE?')">[삭제]</a>
-    
+
+    <form action = "{% url 'boards:delete' board.pk %}" method="POST" style="display:inline" onsubmit="return confirm('R U SURE?');">
+        {% csrf_token %}
+        <input type="submit" value="삭제"/>
+    </form>
     
 {% endblock %}
