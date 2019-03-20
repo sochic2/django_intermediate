@@ -1,16 +1,22 @@
 {% extends 'boards/base.html' %}
+{% load static %}
 {% block body %}
     <h1>Detail</h1>
     <h2>{{ board.id }}번째글</h2>
     <hr>
     <h2>{{ board.title }}</h2>
     <p>{{ board.content }}</p>
+    {% if board.image %}
+        <img src="{{ board.image.url }}" alt="{{ board.image }}"><br>
+    {% else %}
+        <img src="{% static 'boards/no_image.png' %}" alt="no_image"><br>
+    {% endif %}
     <p>{{ board.created_at }}</p>
     <p>{{ board.updated_at }}</p>
     <a href="{% url 'boards:index' %}">BACK</a>
     <a href="{% url 'boards:edit' board.pk %}">[수정]</a>
 
-    <form action = "{% url 'boards:delete' board.pk %}" method="POST" style="display:inline" onsubmit="return confirm('R U SURE?');">
+    <form action = "{% url  'boards:delete' board.pk %}" method="POST" style="display:inline" onsubmit="return confirm('R U SURE?');">
         {% csrf_token %}
         <input type="submit" value="삭제"/>
     </form>

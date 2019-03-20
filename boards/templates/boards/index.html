@@ -1,6 +1,8 @@
 {% extends 'boards/base.html' %}
+{% load static %}
 {% block body %}
     <h1>INDEX</h1>
+    <img src="{% static 'sample_img.jpg' %}" alt="img">
     <a href="{% url 'boards:new' %}">글 작성하기</a>
     <hr>
     

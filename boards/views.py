@@ -28,8 +28,9 @@ def new(request):
         # new.html, edit.html에서 form에 action이 없어도 자기 자신의 주소로 보내는 행동을 한다.
         title = request.POST.get('title')
         content = request.POST.get('content')
+        image = request.FILES.get('image')
     
-        board = Board(title=title, content=content)
+        board = Board(title=title, content=content, image=image)
         board.save()    
         
         return redirect('boards:detail', board.pk)

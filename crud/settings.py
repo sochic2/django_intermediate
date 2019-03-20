@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'boards.apps.BoardsConfig',
+    'imagekit',
     'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -119,4 +120,15 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+
+# 이 최상위 경로 자체는 실제 파일이나 디렉토리가 아니고, URL로만 존재하는 단위.
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'crud', 'assets')
+    
+]
+
+#밑의 두개도 쌍, 위에랑 마찬가지로 URL로만 존재하는 단위 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
